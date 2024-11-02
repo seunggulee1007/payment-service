@@ -1,6 +1,6 @@
 package com.ealrybird.paymentservice.adapter.in.web.api;
 
-import com.ealrybird.paymentservice.adapter.in.web.common.WebAdapter;
+import com.ealrybird.paymentservice.common.WebAdapter;
 import com.ealrybird.paymentservice.adapter.in.web.request.TossPaymentConfirmRequest;
 import com.ealrybird.paymentservice.adapter.out.web.excutor.TossPaymentExecutor;
 import com.ealrybird.paymentservice.adapter.response.ApiResponse;

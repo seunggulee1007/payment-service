@@ -1,4 +1,4 @@
-package com.ealrybird.paymentservice.adapter.in.web.common;
+package com.ealrybird.paymentservice.common;
 
 import org.springframework.stereotype.Component;
 
@@ -8,6 +8,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface UseCase {
+public @interface WebAdapter {
 
 }

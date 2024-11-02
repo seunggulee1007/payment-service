@@ -1,17 +1,14 @@
 package com.ealrybird.paymentservice.adapter.in.web.view;
 
-import com.ealrybird.paymentservice.adapter.in.web.common.IdempootencyCreator;
-import com.ealrybird.paymentservice.adapter.in.web.common.WebAdapter;
-import com.ealrybird.paymentservice.adapter.in.web.config.PspProperties;
+import com.ealrybird.paymentservice.common.IdempootencyCreator;
+import com.ealrybird.paymentservice.common.WebAdapter;
 import com.ealrybird.paymentservice.adapter.in.web.request.CheckoutRequest;
 import com.ealrybird.paymentservice.application.port.in.CheckoutCommand;
 import com.ealrybird.paymentservice.application.port.in.CheckoutUseCase;
-import com.ealrybird.paymentservice.domain.CheckoutResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import reactor.core.publisher.Mono;
 
 @Controller
 @WebAdapter
@@ -30,7 +27,7 @@ public class CheckoutController {
             IdempootencyCreator.create(request.getSeed())
         );
 
-        return checkoutUseCase.checkout(command)
+        checkoutUseCase.checkout(command)
                 .map( c -> {
 
                     model.addAttribute("orderId", c.getOrderId());
@@ -39,6 +36,7 @@ public class CheckoutController {
                     return "checkout";
                   }
                 ).block();
+        return "checkout";
     }
 
 }

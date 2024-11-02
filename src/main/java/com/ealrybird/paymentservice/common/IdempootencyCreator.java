@@ -1,4 +1,4 @@
-package com.ealrybird.paymentservice.adapter.in.web.common;
+package com.ealrybird.paymentservice.common;
 
 import java.util.UUID;
 

@@ -13,15 +13,25 @@ public record PaymentEvent(
     PaymentType paymentType,
     PaymentMethod paymentMethod,
     LocalDateTime approvedAt,
-    List<PaymentOrder> paymentOrders
+    List<PaymentOrder> paymentOrders,
+    boolean isPaymentDone
 ) {
 
     public PaymentEvent(Long buyerId, String orderId, String orderName, List<PaymentOrder> paymentOrders) {
-        this(null, buyerId, orderName, orderId, null, null, null, null, paymentOrders);
+        this(null, buyerId, orderName, orderId, null, null, null, null, paymentOrders, false);
+    }
+
+    public PaymentEvent(Long key, String orderId, String orderName, Long buyerId, Boolean isPaymentDone, List<PaymentOrder> list) {
+        this(key, buyerId, orderName, orderId, null, null, null, null, list, isPaymentDone);
     }
 
     public Long totalAmount() {
         return paymentOrders.stream().map(PaymentOrder::amount)
             .reduce(BigDecimal.ZERO, BigDecimal::add).longValue();
     }
+
+    public boolean isPaymentDone() {
+        return isPaymentDone;
+    }
+
 }

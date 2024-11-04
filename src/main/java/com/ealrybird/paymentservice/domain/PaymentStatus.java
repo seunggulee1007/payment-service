@@ -13,4 +13,7 @@ public enum PaymentStatus {
     ;
     private String description;
 
+    public static PaymentStatus get(String paymentOrderStatus) {
+        return valueOf(paymentOrderStatus);
+    }
 }
